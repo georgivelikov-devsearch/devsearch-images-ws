@@ -19,11 +19,10 @@ public class ImageController {
     private ImageService imageService;
 
     @PostMapping("/profile")
-    public ImageResponse addProfileImage(@RequestBody ProfileImageRequest profileRequest)
-	    throws RestApiImagesException {
+    public ImageResponse addProfileImage(@RequestBody ProfileImageRequest imageRequest) throws RestApiImagesException {
 
-	String imageUrl = imageService.saveImageAndReturnURL(profileRequest.getProfilePictureBase64(),
-		profileRequest.getProfilePrivateId());
+	String imageUrl = imageService.saveImageAndReturnURL(imageRequest.getProfilePictureBase64(),
+		imageRequest.getProfilePrivateId());
 
 	ImageResponse response = new ImageResponse();
 	response.setProfilePictureUrl(imageUrl);
