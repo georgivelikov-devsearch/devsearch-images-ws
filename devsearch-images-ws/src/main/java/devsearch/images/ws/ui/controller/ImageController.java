@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import devsearch.images.ws.exception.RestApiImagesException;
 import devsearch.images.ws.service.ImageService;
-import devsearch.images.ws.ui.model.request.ProfileImageRequest;
+import devsearch.images.ws.ui.model.request.DeveloperImageRequest;
 import devsearch.images.ws.ui.model.response.ImageResponse;
 
 @RestController
@@ -19,7 +19,7 @@ public class ImageController {
     private ImageService imageService;
 
     @PostMapping("/profile")
-    public ImageResponse addProfileImage(@RequestBody ProfileImageRequest imageRequest) throws RestApiImagesException {
+    public ImageResponse addProfileImage(@RequestBody DeveloperImageRequest imageRequest) throws RestApiImagesException {
 
 	String imageUrl = imageService.saveImageAndReturnURL(imageRequest.getProfilePictureBase64(),
 		imageRequest.getProfilePrivateId());

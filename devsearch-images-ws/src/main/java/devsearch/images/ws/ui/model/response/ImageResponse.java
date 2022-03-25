@@ -2,14 +2,14 @@ package devsearch.images.ws.ui.model.response;
 
 public class ImageResponse {
 
-    private String profilePictureUrl;
+    private String developerPictureUrl;
 
-    public String getProfilePictureUrl() {
-	return profilePictureUrl;
+    public String getDeveloperPictureUrl() {
+	return developerPictureUrl;
     }
 
-    public void setProfilePictureUrl(String profilePictureUrl) {
-	this.profilePictureUrl = profilePictureUrl;
+    public void setDeveloperPictureUrl(String developerPictureUrl) {
+	this.developerPictureUrl = developerPictureUrl;
     }
 
 }
