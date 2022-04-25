@@ -1,6 +1,6 @@
 package devsearch.images.ws.ui.model.response;
 
-public class ImageResponse {
+public class DeveloperImageResponse {
 
     private String developerPictureUrl;
 

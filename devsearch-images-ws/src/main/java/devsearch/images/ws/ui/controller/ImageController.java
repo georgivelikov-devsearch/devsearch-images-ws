@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import devsearch.images.ws.exception.RestApiImagesException;
 import devsearch.images.ws.service.ImageService;
 import devsearch.images.ws.ui.model.request.DeveloperImageRequest;
-import devsearch.images.ws.ui.model.response.ImageResponse;
+import devsearch.images.ws.ui.model.request.ProjectImageRequest;
+import devsearch.images.ws.ui.model.response.DeveloperImageResponse;
+import devsearch.images.ws.ui.model.response.ProjectImageResponse;
 
 @RestController
 @RequestMapping("images")
@@ -19,14 +21,27 @@ public class ImageController {
     private ImageService imageService;
 
     @PostMapping("/developer")
-    public ImageResponse addDeveloperImage(@RequestBody DeveloperImageRequest imageRequest)
+    public DeveloperImageResponse addDeveloperImage(@RequestBody DeveloperImageRequest imageRequest)
 	    throws RestApiImagesException {
 
 	String imageUrl = imageService.saveImageAndReturnURL(imageRequest.getDeveloperPictureBase64(),
 		imageRequest.getDeveloperId());
 
-	ImageResponse response = new ImageResponse();
+	DeveloperImageResponse response = new DeveloperImageResponse();
 	response.setDeveloperPictureUrl(imageUrl);
+
+	return response;
+    }
+
+    @PostMapping("/project")
+    public ProjectImageResponse addProjectImage(@RequestBody ProjectImageRequest imageRequest)
+	    throws RestApiImagesException {
+
+	String imageUrl = imageService.saveImageAndReturnURL(imageRequest.getProjectPictureUrl(),
+		imageRequest.getProjectId());
+
+	ProjectImageResponse response = new ProjectImageResponse();
+	response.setPictureUrl(imageUrl);
 
 	return response;
     }
